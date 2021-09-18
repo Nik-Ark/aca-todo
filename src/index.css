@@ -14,6 +14,7 @@ body {
 	grid-template-areas:
 		'header'
 		'cards';
+	/* add footer later */
 }
 
 .my--header {
@@ -23,10 +24,13 @@ body {
 
 .cards {
 	grid-area: cards;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
 
 	margin: 2rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 h1,
@@ -38,7 +42,7 @@ h2 {
 	background-color: white;
 	border-radius: 4px;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-	margin: 1rem;
+	margin: 0.5rem;
 	padding: 1rem;
 	width: 20rem;
 }
