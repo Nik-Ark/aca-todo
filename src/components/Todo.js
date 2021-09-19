@@ -3,7 +3,9 @@ function Todo(props) {
 		<div className='card'>
 			<h2>{props.title}</h2>
 			<div className='actions'>
-				<button className='btn'>Delete</button>
+				<button className='btn' onClick={props.deleteHandler}>
+					Delete
+				</button>
 			</div>
 		</div>
 	);
