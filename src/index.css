@@ -5,17 +5,17 @@
 body {
 	font-family: sans-serif;
 	background-color: #dfdfdf;
-	margin: 2rem;
+	/* margin: 2rem; */
 }
 
 @media (min-width: 468px) {
 	.container {
 		display: grid;
-		grid-template-rows: 10% 90%;
+		grid-template-rows: 5% 85% 10%;
 		grid-template-areas:
 			'header'
-			'cards';
-		/* add footer later */
+			'cards'
+			'footer';
 	}
 }
 
@@ -30,23 +30,27 @@ body {
 	margin: 2rem;
 
 	display: flex;
-	align-items: center;
+	align-items: stretch;
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
 h1,
 h2 {
-	color: #244b05;
+	margin: 0.6rem 0.2rem 1.5rem 0.2rem;
+	padding: 0 0.5rem 0.5rem;
+	color: #0e2a55;
 }
 
 .card {
+	position: relative;
 	background-color: white;
 	border-radius: 4px;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 	margin: 0.5rem;
-	padding: 1rem;
+	padding: 0 0 1rem 0;
 	width: 20rem;
+	word-break: break-all;
 }
 
 .actions {
@@ -58,15 +62,25 @@ h2 {
 	padding: 0.5rem 1.5rem;
 	cursor: pointer;
 	border-radius: 4px;
-	background-color: #800040;
+	background-color: #3461dd;
 	color: white;
-	border: 1px solid #800040;
-	margin: 0 1rem;
+	border: 1px solid #3461dd;
+}
+
+.card .btn {
+	position: absolute;
+	right: 0.5rem;
+	bottom: 0.5rem;
+}
+
+.card .btn--edit {
+	right: 6.9rem;
+	bottom: 0.5rem;
 }
 
 .btn:hover {
-	background-color: #9c1458;
-	border-color: #9c1458;
+	background-color: #5076dd;
+	border-color: #5076dd;
 }
 
 .modal {
@@ -76,22 +90,28 @@ h2 {
 	z-index: 2;
 	background-color: white;
 	border-radius: 4px;
-	padding: 1rem;
+	padding: 0.5rem 0 0.5rem 0.7rem;
 	width: 20rem;
 }
 
-.modal p {
-	color: #244b05;
+.modal h3 {
+	margin: 0.5rem 0 1.5rem;
+	color: #0e2a55;
 	font-weight: bold;
+}
+
+.modal .btn {
+	margin-right: 0.5rem;
 }
 
 .btn--alt {
 	background-color: transparent;
-	color: #800040;
+	color: #0e2a55;
 }
 
 .btn--alt:hover {
-	background-color: #f8dae9;
+	color: white;
+	background-color: #5076dd;
 }
 
 .backdrop {
@@ -102,4 +122,33 @@ h2 {
 	height: 100vh;
 	top: 0;
 	left: 0;
+}
+
+.footer {
+	grid-area: footer;
+	text-align: center;
+	margin: 1rem 0.5rem;
+}
+
+.footer .btn {
+	margin: 0.4rem;
+}
+
+.foot--btns {
+	margin: 1rem;
+}
+
+.links {
+	margin: 1rem;
+}
+
+.link {
+	margin: 3rem 0.9rem 0.1rem 0.9rem;
+	text-decoration: none;
+	color: #0e2a55;
+	font-weight: bold;
+}
+
+.link:active {
+	color: #5076dd;
 }

@@ -1,5 +1,5 @@
-function Backdrop({ closeModal }) {
-	return <div className='backdrop' onClick={closeModal} />;
+function Backdrop() {
+	return <div className='backdrop' />;
 }
 
 export default Backdrop;

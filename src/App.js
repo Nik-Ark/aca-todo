@@ -1,27 +1,72 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import * as axios from 'axios';
 import Todo from './components/Todo';
-import Modal from './components/Modal';
+import DelModal from './components/DelModal';
+import AddModal from './components/AddModal';
 import Backdrop from './components/Backdrop';
+import Footer from './components/Footer';
 
 function App() {
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isDelModalOpen, setIsDelModalOpen] = useState(false);
+	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+	const [todosState, setTodosState] = useState([]);
+	const [currId, setCurrId] = useState(0);
 
-	function deleteHandler() {
-		// передать setIsModalOpen в пропсах в компоненты и там реализовать ф-ии
-		setIsModalOpen(true);
+	useEffect(() => getTodos(), []);
+
+	// async function postTodo(title) {
+	// 	try {
+	// 		const promise = await axios.post(`https://repetitora.net/api/JS/Tasks`, {
+	// 			widgetId: 777999,
+	// 			title,
+	// 		});
+	// 		console.log(promise.data);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// }
+
+	// const updateTask = (id, title) => {
+	// 	const promise = axios({
+	// 		method: 'put',
+	// 		url: `https://repetitora.net/api/JS/Tasks`,
+	// 		data: {
+	// 			widgetId: 777999,
+	// 			taskId: id,
+	// 			title,
+	// 			done,
+	// 		},
+	// 	});
+	// 	return promise.then(response => {
+	// 		return response.data;
+	// 	});
+	// };
+	function deleteTodo(id) {
+		setCurrId(id);
+		setIsDelModalOpen(true);
 	}
 
-	function closeModal() {
-		setIsModalOpen(false);
+	async function getTodos() {
+		try {
+			const response = await axios.get(
+				`https://repetitora.net/api/JS/Tasks?widgetId=777999&count=20`
+			);
+			let todos = response.data;
+			console.log(todos);
+			setTodosState(todos);
+		} catch (err) {
+			console.log(err);
+		}
 	}
 
-	function confirmDeleting() {
-		setIsModalOpen(false);
-	}
-
-	function cancelDeleting() {
-		setIsModalOpen(false);
-	}
+	let todosCmpnts = todosState.map(todo => (
+		<Todo
+			title={todo.title}
+			deleteTodo={deleteTodo}
+			id={todo.id}
+			key={todo.id}
+		/>
+	));
 
 	return (
 		<div className='container'>
@@ -29,19 +74,20 @@ function App() {
 				<h1>To do list</h1>
 			</div>
 			<div className='cards'>
-				{isModalOpen && (
-					<Modal
-						confirmDeleting={confirmDeleting}
-						cancelDeleting={cancelDeleting}
+				{isDelModalOpen && (
+					<DelModal
+						id={currId}
+						setIsDelModalOpen={setIsDelModalOpen}
+						getTodos={getTodos}
 					/>
 				)}
-				{isModalOpen && <Backdrop closeModal={closeModal} />}
-				<Todo title='First task' deleteHandler={deleteHandler} />
-				<Todo title='Second task' deleteHandler={deleteHandler} />
-				<Todo title='Third task' deleteHandler={deleteHandler} />
-				<Todo title='Fourth task' deleteHandler={deleteHandler} />
-				<Todo title='Fifth task' deleteHandler={deleteHandler} />
-				<Todo title='Sixth task' deleteHandler={deleteHandler} />
+				{isAddModalOpen && <AddModal setIsAddModalOpen={setIsAddModalOpen} />}
+				{isAddModalOpen && <Backdrop />}
+				{isDelModalOpen && <Backdrop />}
+				{todosCmpnts}
+			</div>
+			<div className='footer'>
+				<Footer setIsAddModalOpen={setIsAddModalOpen} />
 			</div>
 		</div>
 	);
