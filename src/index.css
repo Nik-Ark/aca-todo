@@ -55,6 +55,10 @@ h2 {
 	word-break: break-all;
 }
 
+.card .btn {
+	padding: 0.3rem 1rem;
+}
+
 .card:hover {
 	transition: 0.3s;
 	transform: scale(1.025);
@@ -72,17 +76,17 @@ h2 {
 	color: white;
 }
 
-.btn--watch {
+/* .btn--watch {
 	position: absolute;
-	right: 13.1rem;
+	right: 10.9rem;
 	bottom: 0.5rem;
 	background-color: green;
 	border: 1px solid green;
-}
+} */
 
-.btn--edit {
+.btn--show {
 	position: absolute;
-	right: 7.4rem;
+	right: 5.9rem;
 	bottom: 0.5rem;
 	background-color: #3461dd;
 	border: 1px solid #3461dd;
@@ -90,18 +94,18 @@ h2 {
 
 .btn--delete {
 	position: absolute;
-	right: 0.7rem;
+	right: 0.5rem;
 	bottom: 0.5rem;
 	background-color: rgb(228, 75, 75);
 	border: 1px solid rgb(228, 75, 75);
 }
 
-.btn--watch:hover {
+/* .btn--watch:hover {
 	background-color: rgb(27, 155, 27);
 	border: 1px solid rgb(27, 155, 27);
-}
+} */
 
-.btn--edit:hover {
+.btn--show:hover {
 	background-color: #5076dd;
 	border-color: #5076dd;
 }
@@ -129,13 +133,34 @@ h2 {
 }
 
 .modal .btn {
-	margin-right: 0.5rem;
+	padding: 0.3rem 1rem;
+	margin-right: 0.6rem;
 	background-color: #3461dd;
 	border: 1px solid #3461dd;
 }
 
 .modal .btn--alt {
 	background-color: white;
+}
+
+@keyframes glowing {
+	0% {
+		background-color: #153669;
+		box-shadow: 0 0 3px #153669;
+	}
+	50% {
+		background-color: #2b53c2;
+		box-shadow: 0 0 10px #2b53c2;
+	}
+	100% {
+		background-color: #5076dd;
+		box-shadow: 0 0 3px #5076dd;
+	}
+}
+
+.modal .btn--pending {
+	/* pointer-events: none; */
+	animation: glowing 1300ms infinite;
 }
 
 .modal .btn:hover {
@@ -217,5 +242,5 @@ h2 {
 }
 
 .link:active {
-	color: #5076dd;
+	color: #5a7fe4;
 }

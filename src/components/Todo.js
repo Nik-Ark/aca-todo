@@ -11,9 +11,8 @@ function Todo({ title, id, editTodo, deleteTodo }) {
 		<div className='card'>
 			<h2>{title}</h2>
 			<div className='actions'>
-				<button className='btn btn--watch'>Watch</button>
-				<button className='btn btn--edit' onClick={editHandler}>
-					Edit
+				<button className='btn btn--show' onClick={editHandler}>
+					Show
 				</button>
 				<button className='btn btn--delete' onClick={deleteHandler}>
 					Delete

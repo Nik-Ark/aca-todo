@@ -26,7 +26,8 @@ function App() {
 		setIsEditModalOpen(true);
 	}
 
-	/*		CREATE CUSTOM HOOKS FOR WORKING WITH SERVER LATER		*/
+	/*		CREATE CUSTOM HOOKS FOR WORKING WITH SERVER LATER			*/
+	/*	ADD FIXED COMPONENT SHOWS ERROR IF ERROR RETURNED FROM SERVER	*/
 	async function getTodos() {
 		try {
 			const response = await axios.get('https://repetitora.net/api/JS/Tasks', {
@@ -38,8 +39,6 @@ function App() {
 			});
 			console.log('Server respond: ', response.data);
 			setTodosState(response.data);
-
-			/*	ADD FIXED DIV COMPONENT IN TOP-LEFT CORNER IF ERROR RETURNED (IF ERROR)	*/
 		} catch (err) {
 			console.error(err);
 		}

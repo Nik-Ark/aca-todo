@@ -4,6 +4,7 @@ import * as axios from 'axios';
 function EditModal({ id, todos, setIsEditModalOpen, getTodos }) {
 	let todo = todos.find(todo => todo.id === id);
 	const [title, setTitle] = useState(todo.title);
+	const [isPending, setIsPending] = useState(false);
 
 	function onTitleChange(event) {
 		setTitle(event.target.value);
@@ -14,17 +15,19 @@ function EditModal({ id, todos, setIsEditModalOpen, getTodos }) {
 	}
 
 	async function confirmEditing() {
+		setIsPending(true);
+		const todo = {
+			widgetId: 777999,
+			taskId: id,
+			title,
+		};
 		try {
-			const todo = {
-				widgetId: 777999,
-				taskId: id,
-				title,
-			};
 			const response = await axios.put(
 				'https://repetitora.net/api/JS/Tasks',
 				todo,
 				{ timeout: 5000 }
 			);
+			setIsPending(false);
 			console.log('Put request: ', response.data);
 			getTodos();
 		} catch (err) {
@@ -37,14 +40,27 @@ function EditModal({ id, todos, setIsEditModalOpen, getTodos }) {
 	return (
 		<div className='modal'>
 			<h3>Edit your Task:</h3>
+			<p>Title: </p>
+			<input type='text' required value={title} />
+			<p>Description</p>
 			<textarea required value={title} onChange={onTitleChange}></textarea>
 			<div className='actions'>
-				<button className='btn btn--alt' onClick={cancelEditing}>
-					Cancel
-				</button>
-				<button className='btn' onClick={confirmEditing}>
-					Edit
-				</button>
+				{!isPending && (
+					<button className='btn btn--alt' onClick={cancelEditing}>
+						Cancel
+					</button>
+				)}
+
+				{!isPending && (
+					<button className='btn' onClick={confirmEditing}>
+						Edit
+					</button>
+				)}
+				{isPending && (
+					<button className='btn btn--pending' disabled>
+						Editing Task now
+					</button>
+				)}
 			</div>
 		</div>
 	);
