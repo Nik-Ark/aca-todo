@@ -37,20 +37,27 @@ body {
 
 h1,
 h2 {
+	/* CHANGE FONT OF HEADER */
 	margin: 0.6rem 0.2rem 1.5rem 0.2rem;
 	padding: 0 0.5rem 0.5rem;
-	color: #0e2a55;
+	color: #153669;
 }
 
 .card {
 	position: relative;
 	background-color: white;
 	border-radius: 4px;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	border: 1px solid #7899ca;
+	box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
 	margin: 0.5rem;
 	padding: 0 0 1rem 0;
 	width: 20rem;
 	word-break: break-all;
+}
+
+.card:hover {
+	transition: 0.3s;
+	transform: scale(1.025);
 }
 
 .actions {
@@ -62,25 +69,46 @@ h2 {
 	padding: 0.5rem 1.5rem;
 	cursor: pointer;
 	border-radius: 4px;
-	background-color: #3461dd;
 	color: white;
+}
+
+.btn--watch {
+	position: absolute;
+	right: 13.1rem;
+	bottom: 0.5rem;
+	background-color: green;
+	border: 1px solid green;
+}
+
+.btn--edit {
+	position: absolute;
+	right: 7.4rem;
+	bottom: 0.5rem;
+	background-color: #3461dd;
 	border: 1px solid #3461dd;
 }
 
-.card .btn {
+.btn--delete {
 	position: absolute;
-	right: 0.5rem;
+	right: 0.7rem;
 	bottom: 0.5rem;
+	background-color: rgb(228, 75, 75);
+	border: 1px solid rgb(228, 75, 75);
 }
 
-.card .btn--edit {
-	right: 6.9rem;
-	bottom: 0.5rem;
+.btn--watch:hover {
+	background-color: rgb(27, 155, 27);
+	border: 1px solid rgb(27, 155, 27);
 }
 
-.btn:hover {
+.btn--edit:hover {
 	background-color: #5076dd;
 	border-color: #5076dd;
+}
+
+.btn--delete:hover {
+	background-color: rgb(226, 107, 107);
+	border: 1px solid rgb(226, 107, 107);
 }
 
 .modal {
@@ -96,17 +124,45 @@ h2 {
 
 .modal h3 {
 	margin: 0.5rem 0 1.5rem;
-	color: #0e2a55;
+	color: #153669;
 	font-weight: bold;
 }
 
 .modal .btn {
 	margin-right: 0.5rem;
+	background-color: #3461dd;
+	border: 1px solid #3461dd;
+}
+
+.modal .btn--alt {
+	background-color: white;
+}
+
+.modal .btn:hover {
+	background-color: #5076dd;
+	border-color: #5076dd;
+}
+
+.modal textarea {
+	width: 97%;
+	height: 15vh;
+	margin: 0 0 0.5rem 0;
+	padding: 0.3rem 0.3rem;
+	border: 1px solid #3461dd;
+	border-radius: 4px;
+	color: #153669;
+	font-weight: bold;
+}
+
+.modal textarea:focus {
+	outline: none !important;
+	border: 1px solid #3461dd;
+	box-shadow: 0 0 10px #719ece;
 }
 
 .btn--alt {
 	background-color: transparent;
-	color: #0e2a55;
+	color: #153669;
 }
 
 .btn--alt:hover {
@@ -130,8 +186,15 @@ h2 {
 	margin: 1rem 0.5rem;
 }
 
-.footer .btn {
+.footer .foot--btn {
 	margin: 0.4rem;
+	background-color: #3461dd;
+	border: 1px solid #3461dd;
+}
+
+.footer .foot--btn:hover {
+	background-color: #5076dd;
+	border-color: #5076dd;
 }
 
 .foot--btns {
@@ -147,6 +210,10 @@ h2 {
 	text-decoration: none;
 	color: #0e2a55;
 	font-weight: bold;
+}
+
+.link:hover {
+	color: #2e60aa;
 }
 
 .link:active {

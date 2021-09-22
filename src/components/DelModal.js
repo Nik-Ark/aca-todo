@@ -4,15 +4,19 @@ function DelModal({ setIsDelModalOpen, id, getTodos }) {
 	async function confirmDeleting() {
 		try {
 			const response = await axios.delete(
-				`https://repetitora.net/api/JS/Tasks?widgetId=777999&taskId=${id}`
+				'https://repetitora.net/api/JS/Tasks',
+				{
+					timeout: 3000,
+					params: {
+						widgetId: 777999,
+						taskId: id,
+					},
+				}
 			);
-			if (response.status === 200) {
-				getTodos();
-			} else {
-				console.log("Can't delete this Todo");
-			}
-		} catch (error) {
-			console.log(error);
+			console.log('Deletion request: ', response.data);
+			getTodos();
+		} catch (err) {
+			console.error(err);
 		}
 
 		setIsDelModalOpen(false);
