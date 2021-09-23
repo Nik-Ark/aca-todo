@@ -47,6 +47,7 @@ function App() {
 	let todosCmpnts = todosState.map(todo => (
 		<Todo
 			title={todo.title}
+			description={todo.description}
 			editTodo={editTodo}
 			deleteTodo={deleteTodo}
 			id={todo.id}
@@ -63,6 +64,7 @@ function App() {
 				{isDelModalOpen && (
 					<DelModal
 						id={currId}
+						todos={todosState}
 						setIsDelModalOpen={setIsDelModalOpen}
 						getTodos={getTodos}
 					/>

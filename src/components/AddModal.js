@@ -3,9 +3,15 @@ import * as axios from 'axios';
 
 function AddModal({ setIsAddModalOpen, getTodos }) {
 	const [title, setTitle] = useState('');
+	const [description, setDescription] = useState('');
 	const [isPending, setIsPending] = useState(false);
+
 	function onTitleChange(event) {
 		setTitle(event.target.value);
+	}
+
+	function onDescriptionChange(event) {
+		setDescription(event.target.value);
 	}
 
 	function cancelAddition() {
@@ -17,6 +23,7 @@ function AddModal({ setIsAddModalOpen, getTodos }) {
 		const todo = {
 			widgetId: 777999,
 			title,
+			description,
 		};
 		try {
 			const response = await axios.post(
@@ -35,16 +42,21 @@ function AddModal({ setIsAddModalOpen, getTodos }) {
 
 	return (
 		<div className='modal'>
-			<h3>Create your new Task:</h3>
-			<textarea required value={title} onChange={onTitleChange}></textarea>
+			<h2>Create your new Task</h2>
+			<h3>Title: </h3>
+			<input type='text' required value={title} onChange={onTitleChange} />
+			<h3>Description:</h3>
+			<textarea
+				required
+				value={description}
+				onChange={onDescriptionChange}
+			></textarea>
 			<div className='actions'>
 				{!isPending && (
 					<button className='btn btn--alt' onClick={cancelAddition}>
 						Cancel
 					</button>
 				)}
-
-				{!isPending && <button className='btn'>Description</button>}
 
 				{!isPending && (
 					<button className='btn' onClick={confirmAddition}>

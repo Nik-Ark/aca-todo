@@ -1,4 +1,4 @@
-function Todo({ title, id, editTodo, deleteTodo }) {
+function Todo({ title, description, id, editTodo, deleteTodo }) {
 	function editHandler() {
 		editTodo(id);
 	}
@@ -10,9 +10,10 @@ function Todo({ title, id, editTodo, deleteTodo }) {
 	return (
 		<div className='card'>
 			<h2>{title}</h2>
+			<h3>{description}</h3>
 			<div className='actions'>
-				<button className='btn btn--show' onClick={editHandler}>
-					Show
+				<button className='btn btn--edit' onClick={editHandler}>
+					Edit
 				</button>
 				<button className='btn btn--delete' onClick={deleteHandler}>
 					Delete

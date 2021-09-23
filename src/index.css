@@ -3,9 +3,8 @@
 }
 
 body {
-	font-family: sans-serif;
+	font-family: 'Koh Santepheap', cursive;
 	background-color: #dfdfdf;
-	/* margin: 2rem; */
 }
 
 @media (min-width: 468px) {
@@ -37,9 +36,14 @@ body {
 
 h1,
 h2 {
-	/* CHANGE FONT OF HEADER */
-	margin: 0.6rem 0.2rem 1.5rem 0.2rem;
-	padding: 0 0.5rem 0.5rem;
+	margin: 0.5rem 0.2rem 0.7rem 0.2rem;
+	padding: 0 0.5rem 0.3rem 0.5rem;
+	color: #153669;
+}
+
+h3 {
+	margin: 0.3rem 0.5rem 1rem 0.5rem;
+	padding: 0 0.5rem 0.5rem 0.5rem;
 	color: #153669;
 }
 
@@ -53,6 +57,10 @@ h2 {
 	padding: 0 0 1rem 0;
 	width: 20rem;
 	word-break: break-all;
+}
+
+.card h3 {
+	color: #147283;
 }
 
 .card .btn {
@@ -84,7 +92,7 @@ h2 {
 	border: 1px solid green;
 } */
 
-.btn--show {
+.btn--edit {
 	position: absolute;
 	right: 5.9rem;
 	bottom: 0.5rem;
@@ -105,7 +113,7 @@ h2 {
 	border: 1px solid rgb(27, 155, 27);
 } */
 
-.btn--show:hover {
+.btn--edit:hover {
 	background-color: #5076dd;
 	border-color: #5076dd;
 }
@@ -118,7 +126,7 @@ h2 {
 .modal {
 	position: fixed;
 	align-self: baseline;
-	margin-top: 20vh;
+	margin-top: 10vh;
 	z-index: 2;
 	background-color: white;
 	border-radius: 4px;
@@ -126,8 +134,16 @@ h2 {
 	width: 20rem;
 }
 
+.modal h2 {
+	margin: 0.5rem 0 1rem;
+	padding: 0;
+	color: #153669;
+	font-weight: bold;
+}
+
 .modal h3 {
-	margin: 0.5rem 0 1.5rem;
+	margin: 1rem 0 0.2rem 0;
+	padding: 0;
 	color: #153669;
 	font-weight: bold;
 }
@@ -141,6 +157,10 @@ h2 {
 
 .modal .btn--alt {
 	background-color: white;
+}
+
+.modal .delete {
+	margin-top: 1.5rem;
 }
 
 @keyframes glowing {
@@ -175,11 +195,30 @@ h2 {
 	padding: 0.3rem 0.3rem;
 	border: 1px solid #3461dd;
 	border-radius: 4px;
-	color: #153669;
+	color: #147283;
 	font-weight: bold;
+	font-size: large;
+}
+
+.modal input {
+	width: 97%;
+	height: 5vh;
+	margin: 0 0 0.5rem 0;
+	padding: 0.3rem 0.3rem;
+	border: 1px solid #3461dd;
+	border-radius: 4px;
+	color: #147283;
+	font-weight: bold;
+	font-size: large;
 }
 
 .modal textarea:focus {
+	outline: none !important;
+	border: 1px solid #3461dd;
+	box-shadow: 0 0 10px #719ece;
+}
+
+.modal input:focus {
 	outline: none !important;
 	border: 1px solid #3461dd;
 	box-shadow: 0 0 10px #719ece;

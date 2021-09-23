@@ -3,11 +3,17 @@ import * as axios from 'axios';
 
 function EditModal({ id, todos, setIsEditModalOpen, getTodos }) {
 	let todo = todos.find(todo => todo.id === id);
+
 	const [title, setTitle] = useState(todo.title);
+	const [description, setDescription] = useState(todo.description);
 	const [isPending, setIsPending] = useState(false);
 
 	function onTitleChange(event) {
 		setTitle(event.target.value);
+	}
+
+	function onDescriptionChange(event) {
+		setDescription(event.target.value);
 	}
 
 	function cancelEditing() {
@@ -20,6 +26,7 @@ function EditModal({ id, todos, setIsEditModalOpen, getTodos }) {
 			widgetId: 777999,
 			taskId: id,
 			title,
+			description,
 		};
 		try {
 			const response = await axios.put(
@@ -39,11 +46,15 @@ function EditModal({ id, todos, setIsEditModalOpen, getTodos }) {
 
 	return (
 		<div className='modal'>
-			<h3>Edit your Task:</h3>
-			<p>Title: </p>
-			<input type='text' required value={title} />
-			<p>Description</p>
-			<textarea required value={title} onChange={onTitleChange}></textarea>
+			<h2>Edit your Task</h2>
+			<h3>Title: </h3>
+			<input type='text' required value={title} onChange={onTitleChange} />
+			<h3>Description:</h3>
+			<textarea
+				required
+				value={description}
+				onChange={onDescriptionChange}
+			></textarea>
 			<div className='actions'>
 				{!isPending && (
 					<button className='btn btn--alt' onClick={cancelEditing}>

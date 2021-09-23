@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import * as axios from 'axios';
 
-function DelModal({ setIsDelModalOpen, id, getTodos }) {
+function DelModal({ id, todos, setIsDelModalOpen, getTodos }) {
+	let todo = todos.find(todo => todo.id === id);
+
 	const [isPending, setIsPending] = useState(false);
 
 	async function confirmDeleting() {
@@ -34,8 +36,9 @@ function DelModal({ setIsDelModalOpen, id, getTodos }) {
 
 	return (
 		<div className='modal'>
-			<h3>Are you sure?</h3>
-			<div className='actions'>
+			<h2>Are you sure?</h2>
+			<h3>Confirm deleting: "{todo.title}"</h3>
+			<div className='actions delete'>
 				{!isPending && (
 					<button className='btn btn--alt' onClick={cancelDeleting}>
 						Cancel
