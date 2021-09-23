@@ -84,14 +84,6 @@ h3 {
 	color: white;
 }
 
-/* .btn--watch {
-	position: absolute;
-	right: 10.9rem;
-	bottom: 0.5rem;
-	background-color: green;
-	border: 1px solid green;
-} */
-
 .btn--edit {
 	position: absolute;
 	right: 5.9rem;
@@ -107,11 +99,6 @@ h3 {
 	background-color: rgb(228, 75, 75);
 	border: 1px solid rgb(228, 75, 75);
 }
-
-/* .btn--watch:hover {
-	background-color: rgb(27, 155, 27);
-	border: 1px solid rgb(27, 155, 27);
-} */
 
 .btn--edit:hover {
 	background-color: #5076dd;
@@ -224,6 +211,29 @@ h3 {
 	box-shadow: 0 0 10px #719ece;
 }
 
+.modal--warn h1,
+.modal--warn h2 {
+	text-align: center;
+	padding: 0 1rem 0.5rem 0.3rem;
+}
+
+.modal--warn .line-1 {
+	color: rgba(255, 115, 0, 0.959);
+}
+
+.modal--warn .line-2 {
+	color: rgb(238, 59, 238);
+}
+
+.modal--warn .line-3 {
+	color: green;
+}
+
+.modal--warn .btn {
+	font-weight: bold;
+	padding: 0.5rem 1.5rem;
+}
+
 .btn--alt {
 	background-color: transparent;
 	color: #153669;
@@ -248,6 +258,7 @@ h3 {
 	grid-area: footer;
 	text-align: center;
 	margin: 1rem 0.5rem;
+	padding: 1rem;
 }
 
 .footer .foot--btn {

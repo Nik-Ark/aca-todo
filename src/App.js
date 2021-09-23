@@ -4,6 +4,7 @@ import Todo from './components/Todo';
 import AddModal from './components/AddModal';
 import EditModal from './components/EditModal';
 import DelModal from './components/DelModal';
+import WarnModal from './components/WarnModal';
 import Backdrop from './components/Backdrop';
 import Footer from './components/Footer';
 
@@ -11,6 +12,7 @@ function App() {
 	const [isDelModalOpen, setIsDelModalOpen] = useState(false);
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+	const [isWarnModalOpen, setIsWarnModalOpen] = useState(false);
 	const [todosState, setTodosState] = useState([]);
 	const [currId, setCurrId] = useState(0);
 
@@ -34,7 +36,7 @@ function App() {
 				timeout: 3000,
 				params: {
 					widgetId: 777999,
-					count: 12,
+					count: 21,
 				},
 			});
 			console.log('Server respond: ', response.data);
@@ -55,10 +57,12 @@ function App() {
 		/>
 	));
 
+	let todosLength = todosCmpnts.length;
+
 	return (
 		<div className='container'>
 			<div className='my--header'>
-				<h1>To do list</h1>
+				<h1>"To do list"</h1>
 			</div>
 			<div className='cards'>
 				{isDelModalOpen && (
@@ -80,13 +84,21 @@ function App() {
 						getTodos={getTodos}
 					/>
 				)}
+				{isWarnModalOpen && (
+					<WarnModal setIsWarnModalOpen={setIsWarnModalOpen} />
+				)}
 				{isAddModalOpen && <Backdrop />}
 				{isDelModalOpen && <Backdrop />}
 				{isEditModalOpen && <Backdrop />}
+				{isWarnModalOpen && <Backdrop />}
 				{todosCmpnts}
 			</div>
 			<div className='footer'>
-				<Footer setIsAddModalOpen={setIsAddModalOpen} />
+				<Footer
+					setIsAddModalOpen={setIsAddModalOpen}
+					todosLength={todosLength}
+					setIsWarnModalOpen={setIsWarnModalOpen}
+				/>
 			</div>
 		</div>
 	);

@@ -1,9 +1,14 @@
 import { Fragment } from 'react';
 
-function Footer({ setIsAddModalOpen }) {
+function Footer({ setIsAddModalOpen, todosLength, setIsWarnModalOpen }) {
 	function addTodo() {
+		if (todosLength >= 21) {
+			setIsWarnModalOpen(true);
+			return;
+		}
 		setIsAddModalOpen(true);
 	}
+
 	return (
 		<Fragment>
 			<div className='foot--btns'>
