@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 function Footer({ setIsAddModalOpen, todosLength, setIsWarnModalOpen }) {
 	function addTodo() {
-		if (todosLength >= 21) {
+		if (todosLength >= 9) {
 			setIsWarnModalOpen(true);
 			return;
 		}

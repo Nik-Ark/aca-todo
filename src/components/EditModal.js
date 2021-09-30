@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, createRef } from 'react';
 import * as axios from 'axios';
 
 function EditModal({ id, todos, setIsEditModalOpen, getTodos }) {
@@ -7,6 +7,9 @@ function EditModal({ id, todos, setIsEditModalOpen, getTodos }) {
 	const [title, setTitle] = useState(todo.title);
 	const [description, setDescription] = useState(todo.description);
 	const [isPending, setIsPending] = useState(false);
+
+	const inputTitleRef = createRef();
+	useEffect(() => inputTitleRef.current.focus(), []);
 
 	function onTitleChange(event) {
 		setTitle(event.target.value);
@@ -47,13 +50,21 @@ function EditModal({ id, todos, setIsEditModalOpen, getTodos }) {
 	return (
 		<div className='modal'>
 			<h2>Edit your Task</h2>
-			<h3>Title: </h3>
-			<input type='text' required value={title} onChange={onTitleChange} />
-			<h3>Description:</h3>
+			<label for='title'>Title: </label>
+			<input
+				type='text'
+				required
+				value={title}
+				onChange={onTitleChange}
+				ref={inputTitleRef}
+				id='title'
+			/>
+			<label for='description'>Description:</label>
 			<textarea
 				required
 				value={description}
 				onChange={onDescriptionChange}
+				id='description'
 			></textarea>
 			<div className='actions'>
 				{!isPending && (

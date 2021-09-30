@@ -37,7 +37,8 @@ function DelModal({ id, todos, setIsDelModalOpen, getTodos }) {
 	return (
 		<div className='modal'>
 			<h2>Are you sure?</h2>
-			<h3>Confirm deleting: "{todo.title}"</h3>
+			<h3>Confirm deleting:</h3>
+			<h3>"{todo.title}"</h3>
 			<div className='actions delete'>
 				{!isPending && (
 					<button className='btn btn--alt' onClick={cancelDeleting}>

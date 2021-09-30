@@ -62,7 +62,9 @@ function App() {
 	return (
 		<div className='container'>
 			<div className='my--header'>
-				<h1>"To do list"</h1>
+				<h1>
+					"To do <span>list"</span>
+				</h1>
 			</div>
 			<div className='cards'>
 				{isDelModalOpen && (

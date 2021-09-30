@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect, createRef } from 'react';
 import * as axios from 'axios';
 
 function AddModal({ setIsAddModalOpen, getTodos }) {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [isPending, setIsPending] = useState(false);
+
+	const inputTitleRef = createRef();
+	useEffect(() => inputTitleRef.current.focus(), []);
 
 	function onTitleChange(event) {
 		setTitle(event.target.value);
@@ -43,13 +46,21 @@ function AddModal({ setIsAddModalOpen, getTodos }) {
 	return (
 		<div className='modal'>
 			<h2>Create your new Task</h2>
-			<h3>Title: </h3>
-			<input type='text' required value={title} onChange={onTitleChange} />
-			<h3>Description:</h3>
+			<label for='title'>Title: </label>
+			<input
+				type='text'
+				required
+				value={title}
+				onChange={onTitleChange}
+				ref={inputTitleRef}
+				id='title'
+			/>
+			<label for='description'>Description:</label>
 			<textarea
 				required
 				value={description}
 				onChange={onDescriptionChange}
+				id='description'
 			></textarea>
 			<div className='actions'>
 				{!isPending && (

@@ -10,7 +10,7 @@ function WarnModal({ setIsWarnModalOpen }) {
 			<h1 className='line-3'>You can do it!</h1>
 			<div className='actions'>
 				<button className='btn' onClick={gotIt}>
-					Yeah, I got it
+					Yeah, I got it !
 				</button>
 			</div>
 		</div>

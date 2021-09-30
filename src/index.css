@@ -4,6 +4,7 @@
 
 body {
 	font-family: 'Koh Santepheap', cursive;
+	letter-spacing: 0.1rem;
 	background-color: #dfdfdf;
 }
 
@@ -21,6 +22,12 @@ body {
 .my--header {
 	grid-area: header;
 	text-align: center;
+	letter-spacing: 0.12rem;
+	font-size: 1.2rem;
+}
+
+.my--header span {
+	color: rgb(7, 182, 7);
 }
 
 .cards {
@@ -173,6 +180,13 @@ h3 {
 .modal .btn:hover {
 	background-color: #5076dd;
 	border-color: #5076dd;
+}
+
+.modal label {
+	font-weight: bold;
+	margin: 0.5rem 0 1rem;
+	padding: 0;
+	color: #153669;
 }
 
 .modal textarea {
